@@ -1,86 +1,95 @@
 import WormholeConnect, {
-    WormholeConnectConfig,
-    nttRoutes,
-  } from '@wormhole-foundation/wormhole-connect';
-  
-  const wormholeConfig: WormholeConnectConfig = {
-    network: 'Testnet',
-    chains: ['ArbitrumSepolia', 'Solana'],
-    tokens: ['WSVarbsep', 'WSVsol'],
-    ui: {
-      title: 'Wormhole NTT UI',
-      defaultInputs: {
-        fromChain: 'ArbitrumSepolia',
-        toChain: 'Solana'
-      },
-      showHamburgerMenu: false,
+  WormholeConnectConfig,
+  WormholeConnectTheme,
+  nttRoutes,
+} from '@wormhole-foundation/wormhole-connect';
+import './App.css';  // Make sure to import the CSS file
+
+const theme: WormholeConnectTheme = {"mode":"dark","input":"#181a2d","primary":"#9E77ED","secondary":"#667085","text":"#ffffff","textSecondary":"#79859e","error":"#F04438","success":"#12B76A","badge":"#010101","font":"\"Inter\", sans-serif"};
+
+const wormholeConfig: WormholeConnectConfig = {
+  rpcs: {
+    Solana: "https://rosette-6rof3i-fast-mainnet.helius-rpc.com",
+    Ethereum: "https://eth-mainnet.g.alchemy.com/v2/RUJuXtO3TWJLHABDmymGBU1ugu0076Vz",
+  },
+  network: 'Mainnet',
+  chains: ['Ethereum', 'Solana'],
+  tokens: ['ELooPIN', 'SLooPIN'],
+  ui: {
+    title: 'Wormhole LooPIN Bridge',
+    defaultInputs: {
+      fromChain: 'Solana',
+      toChain: 'Ethereum'
     },
-    routes: [
-      ...nttRoutes({
-        tokens: {
-          WSV_NTT: [
-            {
-              chain: 'ArbitrumSepolia',
-              manager: '0x3F52328B390276eFF9C77940Bc7F81e098De5Ed1',
-              token: '0xff1Fa5B426C6155fbc7e22da6700Ad8C95Da01F4',
-              transceiver: [
-                {
-                  address: '0xA12b94F1a82fbd3bD2721659e692A6467b3Fe478',
-                  type: 'wormhole',
-                },
-              ],
-            },
-            {
-              chain: 'Solana',
-              manager: 'ntNGLGC45T7X1cMX6ezdPdcZDUwEQL3sb62nhEVhLwa',
-              token: 'Hyfw9cTZbMaWJqBcWxutVkT8NLuCwixbdGj6zWY7amD2',
-              transceiver: [
-                {
-                  address: '2PeCzGTK2j4cMSb2yZQxLfVBbnsuenf7i3KdSTRfPRZi',
-                  type: 'wormhole',
-                },
-              ],
-            },
-          ],
-        },
-      }),
-    ],
-    tokensConfig: {
-      WSVarbsep: {
-        key: 'WSVarbsep',
-        symbol: 'WSV',
-        nativeChain: 'ArbitrumSepolia',
-        displayName: 'WSV',
-        tokenId: {
-          chain: 'ArbitrumSepolia',
-          address: '0xff1Fa5B426C6155fbc7e22da6700Ad8C95Da01F4'
-        },
-        coinGeckoId: 'wormhole',
-        icon: 'https://wormhole.com/token.png',
-        decimals: 18
+    showHamburgerMenu: false,
+  },
+  routes: [
+    ...nttRoutes({
+      tokens: {
+        BRZ_NTT: [
+          {
+            chain: 'Ethereum',
+            manager: '0x6bE6CC3825f29EbBD014487B30512984b2C0cDf3',
+            token: '0x975dA7b2325F815F1dE23C8B68f721fb483B8071',
+            transceiver: [
+              {
+                address: '0x42e3ec587dE57b2b28C054DF785a863E3A1b55CF',
+                type: 'wormhole',
+              },
+            ],
+          },
+          {
+            chain: 'Solana',
+            manager: 'nTtyAzdYmpLwAWGWCK3PFqfrsKaPpZgbghy7qiqDb7H',
+            token: 'CHX3FSxGYSJ2LHeQTcGp2oMAoBNngtJ73jsuamMUnZQx',
+            transceiver: [
+              {
+                address: '84J5SnqJTCyFzVX6DM9srpr12Rbzz7m87xcemGLkwjon',
+                type: 'wormhole',
+              },
+            ],
+          },
+        ],
       },
-  
-      WSVsol: {
-        key: 'WSVsol',
-        symbol: 'WSV',
-        nativeChain: 'Solana',
-        displayName: 'WSV',
-        tokenId: {
-          chain: 'Solana',
-          address: 'Hyfw9cTZbMaWJqBcWxutVkT8NLuCwixbdGj6zWY7amD2'
-        },
-        coinGeckoId: 'wormhole',
-        icon: 'https://wormhole.com/token.png',
-        decimals: 9
-      }
+    }),
+  ],
+  tokensConfig: {
+    ELooPIN: {
+      key: 'ELooPIN',
+      symbol: 'LooPIN',
+      nativeChain: 'Ethereum',
+      displayName: 'LooPIN',
+      tokenId: {
+        chain: 'Ethereum',
+        address: '0x975dA7b2325F815F1dE23C8B68f721fb483B8071'
+      },
+      coinGeckoId: 'loopin',
+      icon: 'https://files.loopin.network/logo/transparent.png',
+      decimals: 18
+    },
+    SLooPIN: {
+      key: 'SLooPIN',
+      symbol: 'LooPIN',
+      nativeChain: 'Solana',
+      displayName: 'LooPIN',
+      tokenId: {
+        chain: 'Solana',
+        address: 'CHX3FSxGYSJ2LHeQTcGp2oMAoBNngtJ73jsuamMUnZQx'
+      },
+      coinGeckoId: 'loopin',
+      icon: 'https://files.loopin.network/logo/transparent.png',
+      decimals: 9
     }
   }
-  
-  function App() {
-    return (
-      <div>
-        <WormholeConnect config={wormholeConfig} />
+}
+
+function App() {
+  return (
+      <div className="app-container">
+        <WormholeConnect config={wormholeConfig} theme={theme} />
       </div>
-    )
-  }
-  export default App
+  )
+}
+
+
+export default App
