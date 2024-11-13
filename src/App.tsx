@@ -9,7 +9,7 @@ const theme: WormholeConnectTheme = {"mode":"dark","input":"#181a2d","primary":"
 
 const wormholeConfig: WormholeConnectConfig = {
   rpcs: {
-    Solana: "https://rosette-6rof3i-fast-mainnet.helius-rpc.com",
+    Solana: "https://mainnet.helius-rpc.com/?api-key=40a4599b-1f14-4e17-b7df-4663bcd25bd8",
     Ethereum: "https://eth-mainnet.g.alchemy.com/v2/RUJuXtO3TWJLHABDmymGBU1ugu0076Vz",
   },
   network: 'Mainnet',
